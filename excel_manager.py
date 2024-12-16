@@ -28,7 +28,7 @@ class ExcelManager:
              escalonada_flag) = row
 
             if not nome:
-                # Se nem o nome está preenchido, ignoramos
+                # Se nem o nome está preenchido, ignorar
                 continue
 
             if data_criacao_str:

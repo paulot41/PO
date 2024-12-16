@@ -1,7 +1,7 @@
 """
-Interface gráfica principal em Tkinter, com melhorias:
-- Lista Tarefas com pesquisa parcial, mostra detalhes no mesmo frame
-- Permite consultar e anexar ficheiros (corrigindo erro de ficheiro temporário)
+Interface gráfica principal em Tkinter:
+- Lista Tarefas com pesquisa parcial.
+- Permite consultar e anexar ficheiros
 - Adicionar Tarefa e Import/Export Excel funcionais
 """
 import tkinter as tk
@@ -22,7 +22,7 @@ class Application(tk.Tk):
         self.gestor = GestorDeTarefas()
         self.excel_manager = ExcelManager()
 
-        # Configura layout
+        # Configur layout
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
@@ -74,7 +74,7 @@ class Application(tk.Tk):
 
     def create_menu(self, frame):
         """
-        Menu Principal (simplificado) sem opções redundantes.
+        Menu Principal
         """
         tk.Label(frame, text="Menu Principal", font=("Helvetica", 16)).pack(pady=20)
 
@@ -128,7 +128,7 @@ class Application(tk.Tk):
         btn_voltar = tk.Button(frame, text="Voltar", command=lambda: self.show_frame("MenuPrincipal"))
         btn_voltar.pack(pady=5)
 
-        # Dividimos em list_frame (tarefas) e detail_frame (detalhes)
+        # list_frame (tarefas) e detail_frame (detalhes)
         painel = tk.Frame(frame)
         painel.pack(fill=tk.BOTH, expand=True)
 
@@ -153,7 +153,7 @@ class Application(tk.Tk):
 
         self.listbox_tarefas.bind("<<ListboxSelect>>", selecionar_tarefa)
 
-        # Botão para atualizar manualmente a lista se o utilizador quiser
+        # Botão para atualizar manualmente a lista de tarefas
         btn_atualizar = tk.Button(self.list_frame, text="Atualizar Lista",
                                   command=lambda: self.atualizar_lista_tarefas(""))
         btn_atualizar.pack(pady=5)
@@ -181,7 +181,7 @@ class Application(tk.Tk):
 
     def mostrar_detalhes_tarefa(self, id_tarefa):
         """
-        Exibe detalhes no detail_frame, onde pode alterar prioridade, remover e anexar ficheiros.
+        Exibe detalhes no detail_frame, onde pode ser alterada prioridade, remover e anexar ficheiros.
         """
         for widget in self.detail_frame.winfo_children():
             widget.destroy()
@@ -311,7 +311,7 @@ class Application(tk.Tk):
 
     def create_adicionar_tarefa(self, frame):
         """
-        Frame para adicionar nova tarefa, incluindo anexos (restaurado).
+        Frame para adicionar nova tarefa, incluindo anexos.
         """
         tk.Label(frame, text="Adicionar Tarefa", font=("Helvetica", 14)).pack(pady=5)
         btn_voltar = tk.Button(frame, text="Voltar", command=lambda: self.show_frame("MenuPrincipal"))
